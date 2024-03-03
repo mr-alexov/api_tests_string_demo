@@ -1,0 +1,1 @@
+A skeleton repository for demoing some api tests possibilities

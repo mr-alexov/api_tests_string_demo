@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version "8.4"
+}
+
+def allureVersion = "2.21.0",
+    assertJVersion = "3.24.2",
+    jacksonVersion = "2.14.2",
+    junitVersion = "5.9.3",
+    restAssuredVersion = "5.3.0",
+    selenideVersion = "6.19.1",
+    slf4jVersion = "2.0.12"
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+// Esxcessive dependecies put here deliberately
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "org.assertj:assertj-core:$assertJVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-api:$slf4jVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion"
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
