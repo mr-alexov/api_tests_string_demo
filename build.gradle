@@ -36,6 +36,7 @@ allure {
 // Esxcessive dependecies put here deliberately
 dependencies {
     testImplementation(
+            "commons-io:commons-io:2.15.1",
             "com.codeborne:selenide:$selenideVersion",
             "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
